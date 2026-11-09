@@ -40,6 +40,18 @@ As verificações incluem SHA-256 e políticas configuráveis para exigir assina
 
 O rollback é tratado como uma saga com estado intermediário. A release é reservada como `Revertendo` antes do efeito remoto; só passa a `Revertida` depois que a versão anterior é confirmada no catálogo local. Falhas permanecem explícitas e podem ser reconciliadas ou recuperadas com uma nova operação idempotente.
 
+```mermaid
+stateDiagram-v2
+    [*] --> Sucesso
+    Sucesso --> Revertendo: Reservar rollback de forma condicional
+    Revertendo --> Revertida: Rollback remoto e versão anterior confirmados
+    Revertendo --> Revertendo: Falha recuperável — reconciliar
+    Revertendo --> FalhaRollback: Falha permanente ou dead-letter
+    FalhaRollback --> Revertendo: Recuperação explícita com nova chave de operação
+```
+
+O catálogo local só confirma a versão anterior após a confirmação remota; um rollback falho ou incerto não se transforma silenciosamente em uma release bem-sucedida.
+
 ## Escopo deste showcase
 
 Este resumo apresenta capacidades em alto nível. Não publica código-fonte, detalhes de autenticação, endpoints operacionais, segredos, dados de clientes, topologia detalhada ou configuração operacional de ambientes.
