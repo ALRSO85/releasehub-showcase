@@ -54,4 +54,6 @@ O catálogo local só confirma a versão anterior após a confirmação remota; 
 
 ## Escopo deste showcase
 
+Para preparar uma conversa técnica em português, consulte os [pontos de conversa para entrevista](docs/interview-talking-points-ptbr.md).
+
 Este resumo apresenta capacidades em alto nível. Não publica código-fonte, detalhes de autenticação, endpoints operacionais, segredos, dados de clientes, topologia detalhada ou configuração operacional de ambientes.
