@@ -36,6 +36,10 @@ flowchart LR
 
 As verificações incluem SHA-256 e políticas configuráveis para exigir assinatura, proveniência e SBOM antes da implantação. A validação registra o resultado para apoiar rastreabilidade e decisões de release.
 
+## Recuperação de rollback
+
+O rollback é tratado como uma saga com estado intermediário. A release é reservada como `Revertendo` antes do efeito remoto; só passa a `Revertida` depois que a versão anterior é confirmada no catálogo local. Falhas permanecem explícitas e podem ser reconciliadas ou recuperadas com uma nova operação idempotente.
+
 ## Escopo deste showcase
 
 Este resumo apresenta capacidades em alto nível. Não publica código-fonte, detalhes de autenticação, endpoints operacionais, segredos, dados de clientes, topologia detalhada ou configuração operacional de ambientes.
