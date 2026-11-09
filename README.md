@@ -12,6 +12,10 @@ ReleaseHub é uma plataforma self-hosted para governar e executar releases de so
 
 Coordenar mudanças de software exige contexto para a decisão, evidências de execução e uma forma clara de validar ou reverter uma release. O ReleaseHub organiza essas etapas em um fluxo rastreável.
 
+## Minha contribuição
+
+Sou responsável pelo desenho, pela arquitetura e pela construção do produto.
+
 ## Arquitetura em alto nível
 
 - **Aplicação:** ASP.NET Core sobre .NET 10.
