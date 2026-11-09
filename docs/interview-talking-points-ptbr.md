@@ -30,6 +30,8 @@ Roteiro de entrevista baseado nas decisões documentadas neste showcase público
 
 O estado intermediário evita declarar o rollback concluído antes de confirmar os passos remotos e locais. A recuperação passa a exigir estado persistido, idempotência e reconciliação, o que adiciona complexidade ao fluxo; em troca, a divergência não fica escondida como sucesso.
 
+**Aprendizado técnico que o case evidencia:** efeitos distribuídos não formam uma transação única. Modelar estados intermediários e recuperação torna falhas parciais visíveis e permite reconciliar o resultado sem presumir que o timeout desfez a operação remota.
+
 ### Resposta curta sugerida
 
 > No rollback, há um efeito remoto e uma atualização do catálogo local; não existe uma única transação que cubra os dois lados. Modelei o fluxo como uma saga: primeiro reservo a operação em `Revertendo`, depois executo o rollback remoto e atualizo o catálogo, e só então concluo como `Revertida`. Se houver falha recuperável, o estado intermediário permite reconciliação. A decisão torna o estado real mais explícito e recuperável, com o custo de manter essa máquina de estados e o processo de recuperação.
