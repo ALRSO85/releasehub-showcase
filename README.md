@@ -15,7 +15,7 @@ Coordenar mudanças de software exige contexto para a decisão, evidências de e
 ## Arquitetura em alto nível
 
 - **Aplicação:** ASP.NET Core sobre .NET 10.
-- **Execução:** self-hosted em Ubuntu Server, com Docker.
+- **Execução:** self-hosted em Ubuntu Server, com Docker e Cloudflare Tunnel para ingresso.
 - **Persistência:** SQL Server.
 - **Fluxo:** catálogo e pacotes → aprovação e agendamento → execução → validação e auditoria.
 
