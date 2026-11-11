@@ -1,27 +1,14 @@
-# ReleaseHub — showcase técnico
-
-> Visão pública e sanitizada do produto. Este material não contém código-fonte, credenciais, dados de clientes ou configuração de produção.
+# ReleaseHub — visão técnica
 
 ## Visão geral
 
-ReleaseHub é uma plataforma self-hosted para governar e executar releases de software em ambientes privados ou híbridos. O fluxo conecta pacote, aprovação, agendamento, execução, validação e auditoria.
+ReleaseHub é uma plataforma self-hosted para governar e executar releases de software em ambientes privados ou híbridos. O fluxo conecta pacote, aprovação, agendamento, execução, validação e auditoria. Sou responsável pelo desenho, pela arquitetura e pela construção do produto.
 
 [Acessar o ReleaseHub](https://releasehub.devforyou.com.br/) — o acesso às áreas operacionais requer uma conta autorizada.
 
-## Desafio de produto
+## Arquitetura
 
-Coordenar mudanças de software exige contexto para a decisão, evidências de execução e uma forma clara de validar ou reverter uma release. O ReleaseHub organiza essas etapas em um fluxo rastreável.
-
-## Minha contribuição
-
-Sou responsável pelo desenho, pela arquitetura e pela construção do produto.
-
-## Arquitetura em alto nível
-
-- **Aplicação:** ASP.NET Core sobre .NET 10.
-- **Execução:** self-hosted em Ubuntu Server, com Docker e Cloudflare Tunnel para ingresso.
-- **Persistência:** SQL Server.
-- **Fluxo:** catálogo e pacotes → aprovação e agendamento → execução → validação e auditoria.
+O ReleaseHub é uma aplicação ASP.NET Core sobre .NET 10, com SQL Server. Roda em ambiente self-hosted no Ubuntu Server, em Docker, com Cloudflare Tunnel para acesso. O fluxo parte do catálogo e dos pacotes, passa por aprovação e agendamento e termina com execução, validação e auditoria.
 
 ```mermaid
 flowchart LR
@@ -52,8 +39,6 @@ stateDiagram-v2
 
 O catálogo local só confirma a versão anterior após a confirmação remota; um rollback falho ou incerto não se transforma silenciosamente em uma release bem-sucedida.
 
-## Escopo deste showcase
+## Sobre este repositório
 
-Para preparar uma conversa técnica em português, consulte os [pontos de conversa para entrevista](docs/interview-talking-points-ptbr.md).
-
-Este resumo apresenta capacidades em alto nível. Não publica código-fonte, detalhes de autenticação, endpoints operacionais, segredos, dados de clientes, topologia detalhada ou configuração operacional de ambientes.
+Este repositório apresenta decisões técnicas sem expor o código-fonte completo nem configurações operacionais privadas.
